@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 typedef S = String;
 
 class MyConsts {
@@ -12,4 +14,6 @@ class MyConsts {
   static const S question = '${base}question.svg';
   static const S settings = '${base}settings.svg';
   static const S sticker = '${base}sticker.svg';
+
+  static final messengerKey = GlobalKey<ScaffoldMessengerState>();
 }
