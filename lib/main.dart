@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         TaskPage.path: (context) => const TaskPage(),
         PdpLoginUiPage.path: (context) => const PdpLoginUiPage()
       },
-      initialRoute: PdpLoginUiPage.path,
+      initialRoute: TaskPage.path,
     );
   }
 }

@@ -14,20 +14,44 @@ class TaskPage extends StatefulWidget {
 }
 
 class _TaskPageState extends State<TaskPage> {
+  int? _currentIndex = 0;
   final List<TileModel> _list = [
-    TileModel(icon: MyConsts.bell, title: 'Notifications', isSelected: true),
     TileModel(
-        icon: MyConsts.lock, title: 'Privacy and Security', isSelected: false),
-    TileModel(icon: MyConsts.chat, title: 'Chat Settings', isSelected: false),
-    TileModel(icon: MyConsts.sticker, title: 'Sticker', isSelected: false),
-    TileModel(icon: MyConsts.folder, title: 'Folders', isSelected: false),
+      icon: MyConsts.bell,
+      title: 'Notifications',
+    ),
     TileModel(
-        title: 'Advanced Settings', icon: MyConsts.settings, isSelected: false),
-    TileModel(title: 'Language', icon: MyConsts.earth, isSelected: false),
+      icon: MyConsts.lock,
+      title: 'Privacy and Security',
+    ),
     TileModel(
-        icon: MyConsts.question, title: 'Telegram FAQ', isSelected: false),
+      icon: MyConsts.chat,
+      title: 'Chat Settings',
+    ),
     TileModel(
-        icon: MyConsts.chat_multi, title: 'Ask a Question', isSelected: false)
+      icon: MyConsts.sticker,
+      title: 'Sticker',
+    ),
+    TileModel(
+      icon: MyConsts.folder,
+      title: 'Folders',
+    ),
+    TileModel(
+      title: 'Advanced Settings',
+      icon: MyConsts.settings,
+    ),
+    TileModel(
+      title: 'Language',
+      icon: MyConsts.earth,
+    ),
+    TileModel(
+      icon: MyConsts.question,
+      title: 'Telegram FAQ',
+    ),
+    TileModel(
+      icon: MyConsts.chat_multi,
+      title: 'Ask a Question',
+    )
   ];
 
   @override
@@ -295,14 +319,20 @@ class _TaskPageState extends State<TaskPage> {
               )
             : const SizedBox(),
         itemBuilder: (context, index) => menuTile(
-              icon: _list[index].icon!,
-              title: _list[index].title!,
-              isSelected: _list[index].isSelected!,
-            ));
+            icon: _list[index].icon!,
+            title: _list[index].title!,
+            isSelected: index == _currentIndex,
+            onPress: () {
+              _currentIndex = index;
+              setState(() {});
+            }));
   }
 
   Widget menuTile(
-      {required String icon, required String title, bool isSelected = false}) {
+      {required String icon,
+      required String title,
+      bool isSelected = false,
+      GestureTapCallback? onPress}) {
     return Padding(
       padding: const EdgeInsets.only(right: 15),
       child: Card(
@@ -312,6 +342,7 @@ class _TaskPageState extends State<TaskPage> {
         color: Colors.transparent,
         child: ListTile(
           dense: true,
+          onTap: onPress,
           selected: isSelected,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
           selectedTileColor: const Color.fromRGBO(255, 255, 255, 0.0605),
