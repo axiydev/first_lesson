@@ -5,6 +5,7 @@ Created by Axmadjon Isaqov on 14:19:11 20.07.2022
 import 'package:first_lesson/consts/consts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 ///Pdp ui1
 class PdpLoginUiPage extends StatefulWidget {
@@ -163,12 +164,26 @@ class _PdpLoginUiPageState extends State<PdpLoginUiPage>
                             color: const Color(0xFF2E7D31),
                             borderRadius: BorderRadius.circular(30),
                             onPressed: () => _login(),
-                            child: const Text(
-                              'Login',
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: const [
+                                FaIcon(
+                                  FontAwesomeIcons.apple,
+                                  size: 18,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 3,
+                                ),
+                                Text(
+                                  'Login',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                )
+                              ],
                             ))),
                   ),
                   const SizedBox(
